@@ -1,0 +1,75 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+type CardInfo = {
+  Title: string;
+  Data: string;
+};
+
+const populateCards = () => {
+  const cards: CardInfo[] = [];
+  for (let i = 0; i < 15; i++) {
+    cards.push({
+      Title: "This is a title for a card",
+      Data: `This is the text that goes into the card, i'm going to make it abit longer for the case of checking how flex boxes work`,
+    });
+  }
+  return cards;
+};
+
+const cards = populateCards();
+---
+
+<Layout title="Harry's Test">
+  <main>
+    <h1>Harry's Notes</h1>
+    <div class="card-grid">
+      {
+        cards.map((card) => (
+          <article class="card">
+            <div class="card-header">{card.Title}</div>
+          </article>
+        ))
+      }
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    /* max-width: 70ch; */
+    text-align: center;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 0;
+    color: white;
+    -webkit-text-stroke: 1px black;
+  }
+  .card-grid {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1em;
+    /* grid-auto-flow: column; */
+  }
+  .card {
+    outline-color: #454545;
+    /* max-width: 40rem; */
+  }
+  .card-header {
+    min-height: 4rem;
+    background-color: #2e2e2e;
+    min-width: auto;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
