@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 import { prisma } from "../server/db/client";
+import CreateNote from "../components/CreateNote.vue";
 
 const cards = await prisma.note.findMany();
 ---
@@ -9,14 +11,10 @@ const cards = await prisma.note.findMany();
   <main>
     <h1>Harry's Notes</h1>
     <div class="card-grid">
-      {
-        cards.map((card) => (
-          <article class="card">
-            <div class="card-header">{card.Title}</div>
-            <div class="card-body">{card.Data}</div>
-          </article>
-        ))
-      }
+      {cards.map((card) => <Card Title={card.Title} Data={card.Data} />)}
+    </div>
+    <div class="create-button">
+      <CreateNote client:visible />
     </div>
   </main>
 </Layout>
@@ -43,39 +41,9 @@ const cards = await prisma.note.findMany();
     gap: 1em;
     /* grid-auto-flow: column; */
   }
-  .card {
-    outline-color: #454545;
-    /* max-width: 40rem; */
-  }
-  .card-header {
-    min-height: 4rem;
-    background-color: #2e2e2e;
-    outline: #d8d7d5 solid 1px;
-    min-width: auto;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: middle;
+  .create-note {
     display: flex;
-    align-items: center;
     justify-content: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  .card-body {
-    min-height: 8rem;
-    background-color: #2e2e2e;
-    outline: #d8d7d5 solid 1px;
-    min-width: auto;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: middle;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
   }
 </style>

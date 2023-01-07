@@ -7,5 +7,5 @@ import { API_NO_BODY_PROVIDED, HTTP_BAD_REQUEST } from "./constants";
  * @returns {Response} returns a JSON & HTTP response for use in the Astro api routes
  */
 export const ApiResponse = (object: any, statusCode: number): Response => {
-    return new Response(JSON.stringify(object), { status: statusCode })
-}
+  return new Response(JSON.stringify(object), { status: statusCode });
+};
