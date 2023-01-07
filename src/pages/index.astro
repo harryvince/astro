@@ -5,7 +5,7 @@ import { prisma } from "../server/db/client";
 const cards = await prisma.note.findMany();
 ---
 
-<Layout title="Harry's Test">
+<Layout title="Harry's Notes">
   <main>
     <h1>Harry's Notes</h1>
     <div class="card-grid">
