@@ -1,24 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { prisma } from "../../server/db/client";
 
-type CardInfo = {
-  Title: string;
-  Data: string;
-};
-
-const populateCards = async () => {
-  const cards: CardInfo[] = [];
-
-  for (let i = 0; i < 15; i++) {
-    cards.push({
-      Title: "This is a title for a card",
-      Data: `This is the text that goes into the card, i'm going to make it abit longer for the case of checking how flex boxes work`,
-    });
-  }
-  return cards;
-};
-
-const cards = await populateCards();
+const cards = await prisma.note.findMany();
 ---
 
 <Layout title="Harry's Test">
