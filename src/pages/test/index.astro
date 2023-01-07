@@ -6,8 +6,9 @@ type CardInfo = {
   Data: string;
 };
 
-const populateCards = () => {
+const populateCards = async () => {
   const cards: CardInfo[] = [];
+
   for (let i = 0; i < 15; i++) {
     cards.push({
       Title: "This is a title for a card",
@@ -17,7 +18,7 @@ const populateCards = () => {
   return cards;
 };
 
-const cards = populateCards();
+const cards = await populateCards();
 ---
 
 <Layout title="Harry's Test">
@@ -28,6 +29,7 @@ const cards = populateCards();
         cards.map((card) => (
           <article class="card">
             <div class="card-header">{card.Title}</div>
+            <div class="card-body">{card.Data}</div>
           </article>
         ))
       }
@@ -50,9 +52,10 @@ const cards = populateCards();
     -webkit-text-stroke: 1px black;
   }
   .card-grid {
-    padding: 1.5rem;
+    justify-content: center;
+    padding-top: 1.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1em;
     /* grid-auto-flow: column; */
   }
@@ -63,6 +66,7 @@ const cards = populateCards();
   .card-header {
     min-height: 4rem;
     background-color: #2e2e2e;
+    outline: #d8d7d5 solid 1px;
     min-width: auto;
     color: white;
     font-weight: bold;
@@ -71,5 +75,23 @@ const cards = populateCards();
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .card-body {
+    min-height: 8rem;
+    background-color: #2e2e2e;
+    outline: #d8d7d5 solid 1px;
+    min-width: auto;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 </style>
