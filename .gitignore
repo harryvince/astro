@@ -21,9 +21,5 @@ pnpm-debug.log*
 
 # Ignore DB and editor
 db.sqlite
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+
+**/.vscode/
