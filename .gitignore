@@ -19,5 +19,11 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# Ignore DB
+# Ignore DB and editor
 db.sqlite
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
